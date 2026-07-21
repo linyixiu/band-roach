@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Band Roach 操作指南：級數轉和弦、Capo、指法、播放與拍照轉譜。">
+  <title>Band Roach｜操作指南</title>
+  <style>
+    :root { --bg:#ece9e3; --paper:#f8f5ef; --ink:#1f1e1b; --muted:#716f69; --blue:#9fb3bf; --purple:#7d6c96; --peach:#ead5c8; --line:#c9c4bb; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); background: var(--bg); font-family: ui-rounded, "SF Pro Rounded", "PingFang TC", "Noto Sans TC", system-ui, sans-serif; line-height: 1.7; }
+    a { color: inherit; }
+    .shell { width: min(1080px, calc(100% - 28px)); margin: 0 auto; }
+    header { padding: 58px 0 38px; }
+    .brand { display: inline-flex; align-items: center; gap: 9px; font-weight: 950; letter-spacing: -.02em; }
+    .hero { margin-top: 28px; padding: clamp(28px, 6vw, 68px); border: 3px solid var(--ink); border-radius: 30px; background: var(--blue); box-shadow: 8px 8px 0 var(--ink); }
+    .eyebrow { font-size: 12px; font-weight: 950; letter-spacing: .16em; color: #413c48; }
+    h1 { margin: 7px 0 14px; font-size: clamp(48px, 10vw, 104px); line-height: .92; letter-spacing: -.07em; }
+    .hero p { max-width: 700px; margin: 0; font-size: clamp(17px, 2.2vw, 23px); font-weight: 750; }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+    .button { display: inline-block; padding: 11px 16px; border: 2px solid var(--ink); border-radius: 10px; background: var(--paper); box-shadow: 3px 3px 0 var(--ink); font-weight: 900; text-decoration: none; }
+    .button.primary { color: white; background: var(--ink); }
+    nav { position: sticky; top: 10px; z-index: 5; margin: 30px 0 44px; padding: 10px; display: flex; gap: 7px; overflow-x: auto; border: 2px solid var(--ink); border-radius: 14px; background: rgba(248,245,239,.94); backdrop-filter: blur(10px); }
+    nav a { flex: 0 0 auto; padding: 7px 10px; border-radius: 8px; font-size: 13px; font-weight: 850; text-decoration: none; }
+    nav a:hover { background: var(--peach); }
+    main { padding-bottom: 80px; }
+    section { scroll-margin-top: 92px; margin: 0 0 26px; padding: clamp(22px, 4vw, 42px); border: 2px solid var(--ink); border-radius: 22px; background: var(--paper); }
+    section:nth-of-type(3n+2) { background: #e2e7df; }
+    section:nth-of-type(3n) { background: #e6e0ee; }
+    h2 { margin: 0 0 12px; font-size: clamp(27px, 4vw, 42px); line-height: 1.15; letter-spacing: -.045em; }
+    h3 { margin: 24px 0 8px; font-size: 19px; }
+    p { margin: 7px 0; }
+    ol, ul { padding-left: 1.35em; }
+    li + li { margin-top: 7px; }
+    .step-grid, .syntax-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 20px; }
+    .card { padding: 17px; border: 2px solid var(--ink); border-radius: 14px; background: rgba(255,255,255,.55); }
+    .number { display: grid; width: 31px; height: 31px; place-items: center; border-radius: 50%; color: white; background: var(--ink); font-weight: 950; }
+    .card strong { display: block; margin-top: 10px; font-size: 18px; }
+    code { display: inline-block; padding: 2px 7px; border-radius: 6px; color: white; background: var(--ink); font-family: ui-monospace, "SFMono-Regular", monospace; font-weight: 800; }
+    .note { margin-top: 18px; padding: 14px 16px; border-left: 6px solid var(--purple); border-radius: 9px; background: rgba(255,255,255,.58); }
+    .privacy { border-color: var(--purple); }
+    footer { padding: 28px 0 50px; color: var(--muted); text-align: center; font-size: 13px; }
+    @media (max-width: 760px) { .step-grid, .syntax-grid { grid-template-columns: 1fr; } header { padding-top: 24px; } .hero { border-radius: 22px; box-shadow: 5px 5px 0 var(--ink); } nav { margin-top: 22px; } }
+    @media print { body { background: white; } nav, .actions { display: none; } .shell { width: 100%; } .hero, section { break-inside: avoid; box-shadow: none; } }
+  </style>
+</head>
+<body>
+  <header class="shell">
+    <div class="brand"><span aria-hidden="true">🪳</span> Band Roach</div>
+    <div class="hero">
+      <div class="eyebrow">USER GUIDE · FRIENDS BETA</div>
+      <h1>操作指南</h1>
+      <p>看懂級數、換算 Capo、查吉他指法，或把級數譜照片直接覆蓋成和弦。</p>
+      <div class="actions">
+        <a class="button primary" href="https://band-roach.yixiulin24.chatgpt.site">開啟 Band Roach</a>
+        <a class="button" href="#quick-start">從快速開始閱讀</a>
+      </div>
+    </div>
+    <nav aria-label="指南目錄">
+      <a href="#install">安裝</a><a href="#quick-start">快速開始</a><a href="#syntax">輸入方法</a><a href="#capo">Capo</a><a href="#fingering">指法</a><a href="#audio">播放</a><a href="#scan">拍照轉譜</a><a href="#save">保存與隱私</a><a href="#troubleshooting">排除問題</a>
+    </nav>
+  </header>
+
+  <main class="shell">
+    <section id="install">
+      <h2>安裝到主畫面</h2>
+      <h3>iPhone／iPad</h3>
+      <ol><li>使用 Safari 開啟 Band Roach。</li><li>點下方「分享」按鈕。</li><li>選擇「加入主畫面」，再按「加入」。</li></ol>
+      <h3>Android</h3>
+      <ol><li>使用 Chrome 開啟 Band Roach。</li><li>點右上角選單，選擇「安裝應用程式」或「加到主畫面」。</li><li>按「安裝」。</li></ol>
+      <h3>電腦版 Chrome／Edge</h3>
+      <p>點網址列右側的安裝圖示；如果畫面出現「＋ 安裝 Band Roach」，也可以直接使用。</p>
+    </section>
+
+    <section id="quick-start">
+      <h2>三步完成級數換算</h2>
+      <div class="step-grid">
+        <article class="card"><span class="number">1</span><strong>選擇調性</strong><p>例如 C、F、B♭，再選大調或自然小調。</p></article>
+        <article class="card"><span class="number">2</span><strong>輸入級數</strong><p>輸入 <code>1645</code>，畫面會立刻顯示和弦組合。</p></article>
+        <article class="card"><span class="number">3</span><strong>點擊和弦</strong><p>可以聽聲音，並在下方查看建議吉他指法。</p></article>
+      </div>
+      <div class="note"><strong>例：</strong>C 大調輸入 <code>1645</code>，會得到 C → Am → F → G。</div>
+    </section>
+
+    <section id="syntax">
+      <h2>級數與和弦怎麼輸入？</h2>
+      <div class="syntax-grid">
+        <article class="card"><code>1645</code><strong>連續級數</strong><p>最常用的快速輸入方式。</p></article>
+        <article class="card"><code>1 6 4 5</code><strong>空格分隔</strong><p>結果與 1645 相同。</p></article>
+        <article class="card"><code>b3 #4</code><strong>升降級數</strong><p>支援 b／♭ 與 #／♯。</p></article>
+        <article class="card"><code>5(7)</code><strong>屬七和弦</strong><p>括號表示延伸，不會被當成「5、7」兩個和弦。</p></article>
+        <article class="card"><code>1maj7</code><strong>大七和弦</strong><p>也支援 m7、9、sus2、sus4、add9、6、m9、11、13 等。</p></article>
+        <article class="card"><code>5(9)/2</code><strong>Slash Chord</strong><p>斜線後面表示指定低音。</p></article>
+      </div>
+    </section>
+
+    <section id="capo">
+      <h2>使用 Capo</h2>
+      <ol><li>先選調並輸入級數。</li><li>拖曳「Capo」滑桿到實際夾的位置。</li><li>上方和弦卡會改成「你的手要按」的和弦；原本實際發聲的和弦仍會保留供對照。</li></ol>
+      <p>如果畫面出現「初學者建議」，可以點「套用建議」，用較多開放和弦取代難按的封閉和弦。</p>
+    </section>
+
+    <section id="fingering">
+      <h2>查看吉他指法</h2>
+      <ol><li>點上方任一和弦卡。</li><li>往下查看六弦圖與琴格位置。</li><li>若有多種按法，可切換「標準／可靠移調／其他把位／好切換」。</li></ol>
+      <ul><li><strong>×</strong>：這條弦不彈。</li><li><strong>○</strong>：空弦。</li><li><strong>圓點內 1–4</strong>：建議使用的手指，1 是食指、4 是小指。</li></ul>
+      <div class="note">系統找不到可靠按法時會直接說明，不會拿另一個和弦假裝代替。</div>
+    </section>
+
+    <section id="audio">
+      <h2>播放和弦</h2>
+      <p>可選木吉他、電吉他或柔和鋼琴。點單一和弦卡可聽該和弦，按「播放」會依序播放整組。</p>
+      <p>手機與電腦瀏覽器通常要求使用者先點擊，才允許播放聲音；第一次沒有聲音時，再按一次「播放」即可。</p>
+    </section>
+
+    <section id="scan">
+      <h2>拍照轉譜</h2>
+      <ol><li>選擇「直接拍照」或「選擇照片」；電腦也可把圖片拖進區塊。</li><li>按「辨識級數」，等待辨識完成。</li><li>按「框選」，在圖片上按住並上下拖曳，框住譜面上方的和弦級數列。框選會自動橫跨整張圖片。</li><li>和弦出現後，點選標記即可修改級數、和弦名稱、微調位置或刪除。</li><li>需要補充時按「＋ 手動新增」。完成後可匯出 PNG 或 PDF。</li></ol>
+      <div class="note"><strong>辨識建議：</strong>照片盡量平整、清楚、光線均勻。辨識仍可能出錯，練團前請快速核對和弦。</div>
+    </section>
+
+    <section id="save" class="privacy">
+      <h2>自動保存與隱私</h2>
+      <p>調性、級數、Capo、照片、框選與手動修正會自動保存在目前裝置，重開 App 可繼續上次進度。</p>
+      <p>轉譜圖片不會上傳到 Band Roach 伺服器。若要刪除本機紀錄，請在轉譜區按「清除目前樂譜」。</p>
+    </section>
+
+    <section id="troubleshooting">
+      <h2>常見問題</h2>
+      <h3>看不到最新版</h3><p>完全關閉已安裝的 App 再開一次；瀏覽器版也可以重新整理頁面。</p>
+      <h3>沒有聲音</h3><p>確認裝置音量與靜音模式，然後再次按播放。電腦瀏覽器也可檢查分頁是否被靜音。</p>
+      <h3>拍照辨識失敗</h3><p>確認網路連線，改用更清楚、角度更正的圖片；也可以使用「＋ 手動新增」。</p>
+      <h3>和弦或指法看起來不合理</h3><p>回報時請附上調性、輸入的級數、Capo 格數與畫面截圖，會更容易重現問題。</p>
+    </section>
+  </main>
+
+  <footer class="shell">Band Roach · Friends Beta 操作指南</footer>
+</body>
+</html>

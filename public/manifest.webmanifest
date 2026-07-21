@@ -1,0 +1,28 @@
+{
+  "id": "/",
+  "name": "Band Roach｜和弦級數工具",
+  "short_name": "Band Roach",
+  "description": "把級數譜即時翻成和弦，換調、Capo 與吉他指法一次看懂。",
+  "lang": "zh-Hant",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#ece9e3",
+  "theme_color": "#9fb3bf",
+  "categories": ["music", "utilities", "education"],
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
