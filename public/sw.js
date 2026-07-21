@@ -1,4 +1,4 @@
-const CACHE_NAME = "band-roach-v31";
+const CACHE_NAME = "band-roach-v32";
 const APP_SHELL = ["/", "/manifest.webmanifest", "/icon-192.png", "/icon-512.png", "/apple-touch-icon.png"];
 
 self.addEventListener("install", (event) => {
